@@ -5,7 +5,7 @@ const server = express();
 const uploadFolder = "/uploaded_files/";
 
 // View Engine Setup
-server.set("view", path.join(__dirname, "view"));
+server.set("views", path.join(__dirname, "views"));
 server.set("view engine", "ejs");
 	
 server.get("/", function(req, res){
@@ -36,7 +36,9 @@ server.post('/uploadFiles', upload.array('dbfiles', 5), function(request, respon
   respond.end('Files uploaded!');
 });
 
-server.listen(8080, function(error) {
+const PORT = 8027;
+const hostname = '0.0.0.0';
+server.listen(PORT, hostname, function(error) {
   if (error) throw error
-  console.log(`Server running at http://localhost:8080/`);
+  console.log(`Server running at http://${hostname}:${PORT}/`);
 });
