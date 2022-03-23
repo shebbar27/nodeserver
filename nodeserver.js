@@ -23,6 +23,8 @@ server.use(express.static('public'));
 server.post('/uploadFiles', upload.array('dbfiles', 5), function(request, respond) {
   if(request.files) {
 	request.files.forEach(file => {
+		time = new Date(new Date().toUTCString());
+		console.log(time);
 		console.log(file);
 
 		// save the file
